@@ -151,6 +151,9 @@ hacerSesionDeEstudio metodo estudiante (tema:restoTemas) = hacerSesionDeEstudio 
 hacerSesionDeEstudio' :: MetodoDeEstudio -> Estudiante -> Sesion -> Estudiante
 hacerSesionDeEstudio' metodo estudiante temas = foldl (flip metodo) estudiante temas
 
+hacerSesionDeEstudio'' :: MetodoDeEstudio -> Estudiante -> Sesion -> Estudiante
+hacerSesionDeEstudio'' = foldr
+
 maratonDeExpresividad :: Sesion
 maratonDeExpresividad = repeat expresividad
 
@@ -184,5 +187,7 @@ aprendizaje expresividad > 20
 100 > 20
 True
 
-take 5
 -}
+
+repasoEmergencia :: Estudiante -> MetodoDeEstudio -> Sesion -> Estudiante
+repasoEmergencia estudiante metodo = hacerSesionDeEstudio metodo estudiante . take 5
